@@ -24,21 +24,17 @@ class Solution {
         return ans;
     }
     public static void traversal(TreeNode node, List<List<Integer>> ans, int level) {
-        level++;
-        List<Integer> temp=new ArrayList<>();
         if (node!=null) {
-            
-            if (node.left!=null) temp.add(node.left.val);
-            if (node.right!=null) temp.add(node.right.val);
-            if (temp.size()>0) {
-                if (ans.size()>level) {
-                    List<Integer> re = ans.get(ans.size()-level-1);
-                    //List<Integer> newList = Stream.concat(re.stream(), temp.stream()).collect(Collectors.toList());
-                    for (Integer i : temp) {
-                        re.add(i);
-                    }
-                    //ans.set(ans.size()-level-1, newList);
-                } else {
+            level++;
+            if (ans.size()>level) {
+                List<Integer> re = ans.get(ans.size()-level-1);
+                if (node.left!=null) re.add(node.left.val);
+                if (node.right!=null) re.add(node.right.val);
+            } else {
+                List<Integer> temp=new ArrayList<>();
+                if (node.left!=null) temp.add(node.left.val);
+                if (node.right!=null) temp.add(node.right.val);
+                if (temp.size()>0) {
                     ans.add(0,temp);
                 }
             }

@@ -33,8 +33,11 @@ class Solution {
             if (temp.size()>0) {
                 if (ans.size()>level) {
                     List<Integer> re = ans.get(ans.size()-level-1);
-                    List<Integer> newList = Stream.concat(re.stream(), temp.stream()).collect(Collectors.toList());
-                    ans.set(ans.size()-level-1, newList);
+                    //List<Integer> newList = Stream.concat(re.stream(), temp.stream()).collect(Collectors.toList());
+                    for (Integer i : temp) {
+                        re.add(i);
+                    }
+                    //ans.set(ans.size()-level-1, newList);
                 } else {
                     ans.add(0,temp);
                 }
